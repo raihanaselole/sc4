@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Demo App</title>
+  <style>
+    body { font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial; margin: 32px; background:#f7fafc; color:#1f2937; }
+    .card { background:white; padding:20px; border-radius:12px; box-shadow: 0 6px 18px rgba(17,24,39,0.08); max-width:720px; }
+    h1 { margin:0 0 6px 0; font-size:28px; }
+    p { margin:6px 0; color:#4b5563; }
+    pre { background:#f3f4f6; padding:10px; border-radius:8px; overflow:auto; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>Demo App</h1>
+    <p><strong>Status:</strong> {{ info.status }}</p>
+    <p>{{ info.message }}</p>
+
+    <h3>Request info</h3>
+    <p><strong>Client:</strong> {{ info.client }}</p>
+
+    <h3>Useful endpoints</h3>
+    <ul>
+      <li><a href="/">Home (HTML)</a></li>
+      <li><a href="/health">Health (plain text)</a></li>
+    </ul>
+  </div>
+</body>
+</html>
