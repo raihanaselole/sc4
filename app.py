@@ -6,7 +6,7 @@ app = Flask(__name__)
 def index():
     # pastikan body function diindentasi
     return jsonify({
-        "message": "welcome to the jungle",
+        "message": "Hello from demo-app",
         "status": "ok"
     })
 
