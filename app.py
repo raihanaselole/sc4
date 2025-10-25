@@ -1,17 +1,14 @@
-from flask import Flask
-import os
-
+from flask import Flask, jsonify
 
 app = Flask(__name__)
 
+@app.route("/")
+def index():
+    # pastikan body function diindentasi
+    return jsonify({
+        "message": "welcome to the jungle",
+        "status": "ok"
+    })
 
-@app.route('/')
-def hello():
-return {
-"message": "welcome to the jungle",
-"pod": os.environ.get('HOSTNAME', 'unknown')
-}
-
-
-if __name__ == '__main__':
-app.run(host='0.0.0.0', port=5000)
+if __name__ == "__main__":
+    app.run(host="0.0.0.0", port=5000)
