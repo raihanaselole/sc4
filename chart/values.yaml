@@ -1,15 +1,12 @@
 replicaCount: 1
 
-
 image:
-repository: <DOCKERHUB_USERNAME>/demo-app
-tag: latest
-pullPolicy: IfNotPresent
-
+  repository: raihan08/demo-app
+  tag: latest
+  pullPolicy: IfNotPresent
 
 service:
-type: ClusterIP
-port: 80
-
+  type: ClusterIP
+  port: 80
 
 containerPort: 5000
