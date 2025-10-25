@@ -8,7 +8,7 @@ app = Flask(__name__)
 @app.route('/')
 def hello():
 return {
-"message": "Hello to the jungle",
+"message": "welcome to the jungle",
 "pod": os.environ.get('HOSTNAME', 'unknown')
 }
 

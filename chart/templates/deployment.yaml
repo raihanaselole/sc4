@@ -1,28 +1,28 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-name: {{ include "demo-app.fullname" . | trunc 63 | trimSuffix "-" }}
-labels:
-app: {{ include "demo-app.name" . }}
+  name: {{ printf "%s" .Release.Name }}
+  labels:
+    app: {{ printf "%s" .Release.Name }}
 spec:
-replicas: {{ .Values.replicaCount }}
-selector:
-matchLabels:
-app: {{ include "demo-app.name" . }}
-template:
-metadata:
-labels:
-app: {{ include "demo-app.name" . }}
-spec:
-containers:
-- name: {{ include "demo-app.name" . }}
-image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
-imagePullPolicy: {{ .Values.image.pullPolicy }}
-ports:
-- containerPort: {{ .Values.containerPort }}
-readinessProbe:
-httpGet:
-path: /
-port: {{ .Values.containerPort }}
-initialDelaySeconds: 5
-periodSeconds: 5
+  replicas: {{ default 1 .Values.replicaCount }}
+  selector:
+    matchLabels:
+      app: {{ printf "%s" .Release.Name }}
+  template:
+    metadata:
+      labels:
+        app: {{ printf "%s" .Release.Name }}
+    spec:
+      containers:
+        - name: {{ printf "%s" .Release.Name }}
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy | quote }}
+          ports:
+            - containerPort: {{ .Values.containerPort }}
+          readinessProbe:
+            httpGet:
+              path: /
+              port: {{ .Values.containerPort }}
+            initialDelaySeconds: 5
+            periodSeconds: 5
